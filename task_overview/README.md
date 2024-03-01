@@ -1,5 +1,3 @@
-# iac-challenge
-
 ## Terraform Task: Multi-Region Infrastructure Deployment
 
 ### Task Overview
