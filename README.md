@@ -1,6 +1,6 @@
 # iac-challenge
 
-## Terraform Assignment: Multi-Region Infrastructure Deployment
+## Terraform Task: Multi-Region Infrastructure Deployment
 
 ### Task Overview
 The goal of this assignment is to assess your ability to design and deploy a multi-region infrastructure using Terraform. You will be required to create modular Terraform scripts for provisioning the following resources:
