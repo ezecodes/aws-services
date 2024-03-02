@@ -1,0 +1,2 @@
+# Cloud store
+CloudStore's architecture is a modern, cloud-native design that leverages the scalability and flexibility of cloud services. It ensures high availability, fault tolerance, and easy scalability. The architecture includes components like a load balancer for distributing traffic, auto-scaling groups for managing compute resources, and a managed database service for data storage. Combined, these elements create a resilient and efficient platform for running an e-commerce business
