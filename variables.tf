@@ -10,3 +10,5 @@ variable "cidr_private_secondary_subnet" {}
 variable "cidr_public_primary_subnet" {}
 variable "cidr_public_secondary_subnet" {}
 variable "cidr_route_table" {}
+
+variable "s3_bucket_name" {}
