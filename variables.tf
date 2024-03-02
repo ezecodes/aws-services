@@ -1,3 +1,4 @@
 variable "aws_region" {}
-variable "cidr_block" {}
 variable "project_name" {}
+variable "mysql_user" {}
+variable "mysql_password" {}
