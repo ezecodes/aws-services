@@ -1,30 +1,29 @@
 data "aws_ami" "ubuntu" {
-  owners = ["self"]
+  owners      = ["self"]
   most_recent = true
   filter {
-    name = "name"
+    name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
   filter {
-    name = "virtualization-type"
+    name   = "virtualization-type"
     values = ["hvm"]
   }
 }
-module "vpc" {
-  source = "../vpc"
-  project_name = var.project_name
-}
-resource "aws_instance" "api_server" {
-  ami = data.aws_ami.ubuntu.id
+resource "aws_instance" "ec2" {
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
+  count         = 2
+
+  security_groups = [var.ec2_sg]
 
   network_interface {
-    device_index = 0
-    network_interface_id = module.vpc.primary_public_subnet_id
+    device_index         = 0
+    network_interface_id = var.primary_public_subnet_id
   }
   network_interface {
-    device_index = 1
-    network_interface_id = module.vpc.secondary_public_subnet_id
+    device_index         = 1
+    network_interface_id = var.secondary_public_subnet_id
   }
   tags = {
     Name = "${var.project_name}-api servers"
