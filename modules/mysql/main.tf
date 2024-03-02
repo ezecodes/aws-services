@@ -1,11 +1,6 @@
-module "vpc" {
-  source = "../vpc"
-  project_name = var.project_name
-}
-
 resource "aws_db_subnet_group" "db_subnets" {
-  name = "db_subnets"
-  subnet_ids = [module.vpc.primary_private_subnet_id, module.vpc.secondary_private_subnet_id]
+  name       = "db_subnets"
+  subnet_ids = [var.primary_private_subnet_id, var.secondary_private_subnet_id]
 }
 
 resource "aws_db_instance" "mysql" {
