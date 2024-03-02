@@ -29,7 +29,7 @@ module "ec2" {
   project_name               = var.project_name
   secondary_public_subnet_id = module.vpc.secondary_public_subnet_id
   primary_public_subnet_id   = module.vpc.primary_public_subnet_id
-  ec2_sg = module.ec2_sg.id
+  ec2_sg                     = module.ec2_sg.id
 }
 module "lb_sg" {
   source       = "./modules/security_groups"
