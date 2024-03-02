@@ -1,5 +1,5 @@
 resource "aws_vpc" "vpc" {
-  cidr_block = var.vpc_cidr
+  cidr_block = var.cidr_vpc
   instance_tenancy = "default"
   enable_dns_hostnames = true
   tags = {
@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "internet_gateway" {
 
 resource "aws_subnet" "primary_public_subnet" {
   vpc_id = aws_vpc.vpc.id
-  cidr_block = var.cidr_primary_public
+  cidr_block = var.cidr_public_primary_subnet
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available_zones.names[0]
   tags = {
@@ -29,7 +29,7 @@ resource "aws_subnet" "primary_public_subnet" {
 }
 resource "aws_subnet" "secondary_public_subnet" {
   vpc_id = aws_vpc.vpc.id
-  cidr_block = var.cidr_secondary_public
+  cidr_block = var.cidr_public_secondary_subnet
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available_zones.names[1]
   tags = {
@@ -38,7 +38,7 @@ resource "aws_subnet" "secondary_public_subnet" {
 }
 resource "aws_subnet" "primary_private_subnet" {
   vpc_id = aws_vpc.vpc.id
-  cidr_block = var.cidr_primary_private
+  cidr_block = var.cidr_private_primary_subnet
   map_public_ip_on_launch = false
   availability_zone = data.aws_availability_zones.available_zones.names[0]
   tags = {
@@ -47,7 +47,7 @@ resource "aws_subnet" "primary_private_subnet" {
 }
 resource "aws_subnet" "secondary_private_subnet" {
   vpc_id = aws_vpc.vpc.id
-  cidr_block = var.cidr_secondary_private
+  cidr_block = var.cidr_private_secondary_subnet
   map_customer_owned_ip_on_launch = false
   availability_zone = data.aws_availability_zones.available_zones.names[1]
   tags = {
@@ -57,7 +57,7 @@ resource "aws_subnet" "secondary_private_subnet" {
 resource "aws_route_table" "route_table" {
   vpc_id = aws_vpc.vpc.id
   route {
-    cidr_block = "0.0.0.0/24"
+    cidr_block = var.cidr_route_table
     gateway_id = aws_internet_gateway.internet_gateway.id
   }
   tags = {
