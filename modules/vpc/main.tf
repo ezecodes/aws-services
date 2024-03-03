@@ -46,10 +46,10 @@ resource "aws_subnet" "primary_private_subnet" {
   }
 }
 resource "aws_subnet" "secondary_private_subnet" {
-  vpc_id                          = aws_vpc.vpc.id
-  cidr_block                      = var.cidr_private_secondary_subnet
-  map_customer_owned_ip_on_launch = false
-  availability_zone               = data.aws_availability_zones.available_zones.names[1]
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.cidr_private_secondary_subnet
+  map_public_ip_on_launch = false
+  availability_zone       = data.aws_availability_zones.available_zones.names[1]
   tags = {
     Name = "${var.project_name}-private_subnets"
   }
