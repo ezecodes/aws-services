@@ -1,5 +1,5 @@
-# Cloud store
-CloudStore's architecture is a modern, cloud-native design that includes components like a load balancer for distributing traffic, auto-scaling groups for managing compute resources, and a managed database service for data storage. Combined, these elements create a resilient platform for running an e-commerce business
+# Overview
+This is a cloud-native aws design that includes components like a load balancer for distributing traffic, auto-scaling groups for managing compute resources, and a managed database service for data storage.
 # Infrastructure Design Documentation
 
 ## VPC with Public and Private Subnets
